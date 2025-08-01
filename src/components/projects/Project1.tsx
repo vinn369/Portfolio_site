@@ -95,7 +95,7 @@ const Project1 = () => {
         >
           <div className="relative rounded-2xl overflow-hidden shadow-2xl">
             <img
-              src="/proj1.png"
+              src="/project1.png"
               alt="Image Captioning Generator"
               className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
             />

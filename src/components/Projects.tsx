@@ -17,7 +17,7 @@ const projectsData = [
     id: "project-1",
     title: "Image Captioning Generator with Audio Integration",
     description: "This project uses a deep learning-based system using Xception and LSTM to generate image captions and convert them to speech using gTTS for enhanced accessibility.",
-    imageUrl: "public/proj1.png",
+    imageUrl: "public/project1.png",
   },
   {
     id: "project-2", 
