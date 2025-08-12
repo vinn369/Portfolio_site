@@ -59,6 +59,9 @@ const Hero = () => {
               alt="Sai Vignesh"
               className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] object-contain max-w-[90vw]"
             />
+            <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 md:h-40 lg:h-48 pointer-events-none">
+              <div className="w-full h-full bg-gradient-to-t from-background via-background/60 via-background/30 via-background/10 to-transparent"></div>
+            </div>
           </div>
         </motion.div>
       </div>
