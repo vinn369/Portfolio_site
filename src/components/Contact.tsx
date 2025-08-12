@@ -31,9 +31,9 @@ const Contact = () => {
                 <Linkedin size={20} className="md:w-6 md:h-6" />
                 <span className="text-sm md:text-base">Sai Vignesh Nemali</span>
               </a>
-              <a href="mailto:namalivignesh15@gmail.com" className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground hover:text-foreground transition-colors p-3 rounded-lg hover:bg-muted/50">
+              <a href="mailto:namalivignesh@gmail.com" className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground hover:text-foreground transition-colors p-3 rounded-lg hover:bg-muted/50">
                 <Mail size={20} className="md:w-6 md:h-6" />
-                <span className="text-sm md:text-base">namalivignesh15@gmail.com</span>
+                <span className="text-sm md:text-base">namalivignesh@gmail.com</span>
               </a>
               <a href="https://github.com/vinn369" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground hover:text-foreground transition-colors p-3 rounded-lg hover:bg-muted/50">
                 <Github size={20} className="md:w-6 md:h-6" />
