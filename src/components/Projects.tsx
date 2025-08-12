@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowUpRight, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
@@ -17,7 +16,7 @@ const projectsData = [
     id: "project-1",
     title: "Image Captioning Generator with Audio Integration",
     description: "This project uses a deep learning-based system using Xception and LSTM to generate image captions and convert them to speech using gTTS for enhanced accessibility.",
-    imageUrl: "public/project1.png",
+    imageUrl: "/project1.png",
   },
   {
     id: "project-2", 
@@ -178,6 +177,24 @@ const Projects = () => {
               />
           ))}
       </div>
+      
+      {/* Mobile View Project Button */}
+      <div className="text-center mt-8 md:hidden">
+        <Button 
+          size="lg" 
+          className="w-auto px-24"
+          onClick={() => {
+            const currentProject = projectsData[current];
+            if (currentProject) {
+              window.location.href = `/project/${currentProject.id}`;
+            }
+          }}
+        >
+          View project
+          <ArrowUpRight className="ml-2 h-4 w-4" />
+        </Button>
+      </div>
+
       <div className="text-center mt-12 md:mt-16">
         <a
           href="#skills"

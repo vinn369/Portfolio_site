@@ -5,7 +5,7 @@ import { ArrowDown } from "lucide-react";
 const About = () => {
   return (
     <>
-      <section id="about" className="py-16 md:py-24 bg-secondary">
+      <section id="about" className="py-16 md:py-24 pt-32 md:pt-32 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12 items-center">
             <motion.div

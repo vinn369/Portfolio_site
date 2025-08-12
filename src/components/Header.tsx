@@ -23,11 +23,66 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-            <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-            <a href="#certifications" className="text-muted-foreground hover:text-foreground transition-colors">Certifications</a>
-            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+            <motion.a 
+              href="#about" 
+              className="text-muted-foreground hover:text-foreground transition-colors origin-center"
+              whileHover={{ 
+                scale: 1.2,
+                y: -2,
+                transition: { type: "spring", stiffness: 300, damping: 15 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              About
+            </motion.a>
+            <motion.a 
+              href="#projects" 
+              className="text-muted-foreground hover:text-foreground transition-colors origin-center"
+              whileHover={{ 
+                scale: 1.2,
+                y: -2,
+                transition: { type: "spring", stiffness: 300, damping: 15 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Projects
+            </motion.a>
+            <motion.a 
+              href="#skills" 
+              className="text-muted-foreground hover:text-foreground transition-colors origin-center"
+              whileHover={{ 
+                scale: 1.2,
+                y: -2,
+                transition: { type: "spring", stiffness: 300, damping: 15 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Skills
+            </motion.a>
+            <motion.a 
+              href="#certifications" 
+              className="text-muted-foreground hover:text-foreground transition-colors origin-center"
+              whileHover={{ 
+                scale: 1.2,
+                y: -2,
+                transition: { type: "spring", stiffness: 300, damping: 15 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Certifications
+            </motion.a>
+            <motion.a 
+              href="#contact" 
+              className="text-muted-foreground hover:text-foreground transition-colors origin-center"
+              whileHover={{ 
+                scale: 1.2,
+                y: -2,
+                transition: { type: "spring", stiffness: 300, damping: 15 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact
+            </motion.a>
           </nav>
           
           <div className="flex items-center gap-4">
@@ -55,35 +110,35 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <a 
                 href="#about" 
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </a>
               <a 
                 href="#projects" 
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Projects
               </a>
               <a 
                 href="#skills" 
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Skills
               </a>
               <a 
                 href="#certifications" 
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Certifications
               </a>
               <a 
                 href="#contact" 
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
