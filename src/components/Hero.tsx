@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center container mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-12 overflow-x-hidden max-w-full">
-      <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full max-w-full">
+    <section className="min-h-screen flex items-center container mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-12">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -19,8 +19,8 @@ const Hero = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-8xl font-bold tracking-tighter mb-4">
             Nemali Sai Vignesh 
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6">
-            Tech Enthusiast & Aspiring software Engineer
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 whitespace-nowrap">
+            Tech Enthusiast & Aspiring Software Engineer
           </h2>
           
           <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
@@ -30,12 +30,80 @@ const Hero = () => {
                 <Send className="ml-2 h-4 w-4" />
               </a>
             </Button>
-            <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
-              <a href="https://drive.google.com/file/d/1yUWk2VgfqVw_y6rUHjTuPQTGliLWK9qU/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                My Resume
-                <FileText className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
+            <div className="relative">
+              <motion.div
+                whileHover="hover"
+                initial="initial"
+              >
+                <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
+                  <a href="https://drive.google.com/file/d/1yUWk2VgfqVw_y6rUHjTuPQTGliLWK9qU/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    My Resume
+                    <FileText className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                
+                {/* Resume Preview on Hover - positioned near "Software Engineer" text */}
+                <motion.div
+                  variants={{
+                    initial: { 
+                      opacity: 0, 
+                      scale: 0.8, 
+                      x: 20,
+                      y: -160,
+                      pointerEvents: "none"
+                    },
+                    hover: { 
+                      opacity: 1, 
+                      scale: 1, 
+                      x: 0,
+                      y: -160,
+                      pointerEvents: "auto",
+                      transition: { 
+                        duration: 0.3, 
+                        ease: "easeOut",
+                        delay: 0.1
+                      }
+                    }
+                  }}
+                  className="absolute left-full ml-4 top-0 z-50 opacity-75"
+                >
+                  <div className="bg-secondary/80 backdrop-blur-md border/50 rounded-lg shadow-2xl p-3 w-48 sm:w-56">
+                    <div className="aspect-[8.5/11] bg-secondary/60 rounded border border-muted-foreground/10 overflow-hidden">
+                      {/* Your actual resume image */}
+                      <img 
+                        src="/Vignesh_Resume.jpg" 
+                        alt="Resume Preview" 
+                        className="w-full h-full object-contain"
+                        style={{ 
+                          imageRendering: 'crisp-edges'
+                        }}
+                        onError={(e) => {
+                          // Fallback if image doesn't load
+                          e.currentTarget.style.display = 'none';
+                          const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (fallback) {
+                            fallback.style.display = 'flex';
+                          }
+                        }}
+                      />
+                      {/* Fallback content */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground hidden">
+                        <FileText className="h-6 w-6 mb-1" />
+                        <span className="text-xs text-center">Loading...</span>
+                      </div>
+                    </div>
+                    <div className="text-xs text-muted-foreground/60 text-center mt-2">
+                      Click to view full resume
+                    </div>
+                  </div>
+                  
+                  {/* Arrow pointing to button */}
+                  <div className="absolute -left-2 bottom-4">
+                    <div className="w-0 h-0 border-t-6 border-b-6 border-r-6 border-t-transparent border-b-transparent border-r-background filter drop-shadow-sm"></div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
           
           <div className="mt-8 mb-16 md:mb-8 text-center md:text-left">

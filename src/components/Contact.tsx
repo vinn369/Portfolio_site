@@ -1,11 +1,42 @@
-import { motion } from "framer-motion";
-import { Linkedin, Github, Mail, Instagram, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Linkedin, Github, Mail, Instagram, Phone, Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 const Contact = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Submit the form normally
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      // Show success animation
+      setIsSubmitted(true);
+      
+      // Reset form and animation after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        form.reset();
+      }, 3000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
+  };
   return (
     <section id="contact" className="py-12 md:py-16 container mx-auto px-4 sm:px-6 lg:px-8">
        <div className="text-center mb-12 md:mb-16 hidden md:block">
@@ -54,24 +85,73 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
         >
           <form
-  action="https://formspree.io/f/meokkrkl" // <-- replace with your Formspree endpoint
-  method="POST"
-  className="space-y-6"
->
-  <div className="space-y-2">
-    <Label htmlFor="name">Name</Label>
-    <Input id="name" name="name" type="text" placeholder="Your name" className="h-12" required />
-  </div>
-  <div className="space-y-2">
-    <Label htmlFor="email">Email</Label>
-    <Input id="email" name="email" type="email" placeholder="your.email@gmail.com" className="h-12" required />
-  </div>
-  <div className="space-y-2">
-    <Label htmlFor="message">Message</Label>
-    <Textarea id="message" name="message" placeholder="Tell me about your project or just say hello..." className="min-h-[120px] resize-none" required />
-  </div>
-  <Button type="submit" className="w-full h-12" size="lg">Send Message</Button>
-</form>
+            action="https://formspree.io/f/meokkrkl"
+            method="POST"
+            className="space-y-6"
+            onSubmit={handleSubmit}
+          >
+            <div className="space-y-2">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" name="name" type="text" placeholder="Your name" className="h-12" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" name="email" type="email" placeholder="your.email@gmail.com" className="h-12" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Message</Label>
+              <Textarea id="message" name="message" placeholder="Tell me about your project or just say hello..." className="min-h-[120px] resize-none" required />
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="w-full h-12 relative overflow-hidden" 
+              size="lg"
+            >
+              <AnimatePresence mode="wait">
+                {!isSubmitted ? (
+                  <motion.div
+                    key="send"
+                    initial={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center justify-center"
+                  >
+                    <Send className="mr-2 h-4 w-4" />
+                    Send Message
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="sent"
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ 
+                      duration: 0.5,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15
+                    }}
+                    className="flex items-center justify-center"
+                  >
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ 
+                        duration: 0.6,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 12,
+                        delay: 0.1
+                      }}
+                    >
+                      <CheckCircle className="mr-2 h-4 w-4" />
+                    </motion.div>
+                    Sent
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Button>
+          </form>
         </motion.div>
       </div>
     </section>
